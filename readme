@@ -1,0 +1,45 @@
+1  aop 拦截链的执行
+   doProxyChain->doProxy-doProxyChain->doProxy
+        采用每执行一次进入链中,最终到达链的尾部
+   
+
+
+1、getDataBinderFactory
+根据HandlerMethod 来创建DataBinderFactory
+         内部实现：
+         由method得到其所属的controller 
+        由controller得到添加有@initBinder的method
+        
+        
+2、getModelFactory
+     找到添加有@modelAttribute的method
+     
+     
+3  执行
+        在invokeModelAttributeMethods中先执行@modelAttribute的方法
+        // 在执行时，先准备方法的参数
+        
+        
+        
+4  ServletModelAttributeMethodProcessor 用于处理@modelAttribute参数        
+
+
+5 在@modelAttribute方法上，将modelName 和 modelattribute 添加到container里面
+  
+  // 如何将container里面的放到目标方法的参数里面
+  // 为参数添加@modelAttribute注解
+  
+
+
+
+// modelAndView 
+   1 将modelFactory里面的更新到modelAndViewContainer
+   2 根据modelAndContainer构造modelAndView
+   3 返回
+
+        
+        
+
+     
+              
+         
